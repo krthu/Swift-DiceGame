@@ -11,6 +11,8 @@ struct AiGame: View {
     @StateObject var die = Die(sides: 6)
     @StateObject var opponentDie = Die(sides: 6)
     @State var winnerText = "Roll to see who gets the highest!"
+    @State var playerScore = 0
+    @State var aiScore = 0
     var goBack: () -> Void
     
     
@@ -20,7 +22,7 @@ struct AiGame: View {
                 .ignoresSafeArea()
             VStack {
                 VStack{
-                    Text("Opponent:")
+                    Text("Opponent: \(aiScore)")
                         .font(.footnote)
                         .foregroundColor(.white)
                     DieView(die: opponentDie)
@@ -34,7 +36,7 @@ struct AiGame: View {
                 VStack{
                     DieView(die: die)
                     
-                    Text("You")
+                    Text("You: \(playerScore)")
                         .font(.footnote)
                         .foregroundColor(.white)
                 }
@@ -67,12 +69,14 @@ struct AiGame: View {
 
     }
     func decideWinner(){
-        winnerText = if die.value < opponentDie.value{
-            "You Lost!"
+        if die.value < opponentDie.value{
+            winnerText = "You Lost!"
+            aiScore += 1
         } else if die.value > opponentDie.value{
-            "You Won!"
+            winnerText = "You Won!"
+            playerScore += 1
         } else{
-            "Tie!"
+            winnerText =  "Tie!"
         }
     }
 }

@@ -20,7 +20,7 @@ struct ContentView: View {
                     Button(action: {
                         gameType = .aiGame
                     }, label: {
-                        Text("Start")
+                        Image(systemName: "chevron.forward")
                     })
                 }
             }
