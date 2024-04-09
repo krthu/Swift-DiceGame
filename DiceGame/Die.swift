@@ -9,15 +9,31 @@ import Foundation
 
 class Die: ObservableObject{
     @Published var value: Int = 1
-    let sides: Int
+    var sides: Int = 6
+    let type: DieType
     
-    init(sides: Int) {
-        self.sides = sides
+    init(type: DieType) {
+        self.type = type
+        
+        if type == .six {
+            self.sides = 6
+        } else if type == .twelve{
+            self.sides = 12
+        }
         roll()
+        
+        
+        //self.sides = sides
+        
     }
     
     func roll(){
         value = Int.random(in: 1...sides)
     }
+    
+}
+
+enum DieType {
+    case six, twelve
     
 }

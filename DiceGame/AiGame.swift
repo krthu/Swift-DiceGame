@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AiGame: View {
-    @StateObject var die = Die(sides: 6)
-    @StateObject var opponentDie = Die(sides: 6)
+    @StateObject var die = Die(type: .six)
+    @StateObject var opponentDie = Die(type: .six)
     @State var winnerText = "Roll to see who gets the highest!"
     @State var playerScore = 0
     @State var aiScore = 0
@@ -85,5 +85,5 @@ struct AiGame: View {
 
 
 #Preview {
-    AiGame(die: Die(sides: 6), goBack:{})
+    AiGame(die: Die(type: .twelve), goBack:{})
 }
