@@ -14,15 +14,8 @@ struct ContentView: View {
     var body: some View {
         if gameType == .start{
             List{
-                HStack{
-                    Text("Ai game")
-                    Spacer()
-                    Button(action: {
-                        gameType = .aiGame
-                    }, label: {
-                        Image(systemName: "chevron.forward")
-                    })
-                }
+                gameTypeListRow(title: "Ai Game", type: GameType.aiGame, gameType: $gameType)
+                gameTypeListRow(title: "Betting Game", type: .betGame, gameType: $gameType)
             }
         }
         else if gameType == .aiGame{
@@ -31,9 +24,36 @@ struct ContentView: View {
                 print("GameType is \(gameType)")
             })
         }
+        else if gameType == .betGame{
+            BetGame {
+                gameType = .start
+            }
+                
+        }
+        
+        
+        
     }
 
 }
+
+struct gameTypeListRow: View {
+    var title: String
+    var type: GameType
+    @Binding var gameType: GameType
+    var body: some View {
+        HStack{
+            Text(title)
+            Spacer()
+            Button(action: {
+                gameType = type
+            }, label: {
+                Image(systemName: "chevron.forward")
+            })
+        }
+    }
+}
+
 
 //struct DieView:View {
 //    let dieImageStrings = [1: "die.face.1", 2: "die.face.2", 3: "die.face.3", 4: "die.face.4", 5: "die.face.5", 6: "die.face.6"]
@@ -51,11 +71,15 @@ struct ContentView: View {
 //}
 
 enum GameType{
-    case aiGame
     case start
+    case aiGame
+    case betGame
+
 }
 
 
 #Preview {
     ContentView()
 }
+
+
