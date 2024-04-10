@@ -82,8 +82,10 @@ struct BetGame: View{
         }
         .sheet(isPresented: $showSettingsSheet ,onDismiss: {
             print("Dismissed")
+            
             }, content: {
-                SettingsSheet()
+                SettingsSheet(die: die)
+                    
             })
         
     }
@@ -148,7 +150,7 @@ struct betPicker: View {
 
 struct SettingsSheet: View{
     @State var dice = ["6 sided", "12 sided"]
-    @State private var selectedDie = 0
+    @ObservedObject var die: Die
     var body: some View{
         ZStack{
             LinearGradient(gradient: Gradient(colors: [.green, .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -159,7 +161,8 @@ struct SettingsSheet: View{
                     .fontWeight(.bold)
                     .padding()
                 List{
-                    ChooseDieSection(selectedDie: $selectedDie)
+                    ChooseDieSection(die: die)
+                    
                 }
             }
         }
@@ -168,15 +171,17 @@ struct SettingsSheet: View{
 
 struct ChooseDieSection: View{
     @State var dice = ["6 sided", "12 sided"]
-    @Binding var selectedDie: Int
-    
+//    @Binding var selectedDie: Int
+    @ObservedObject var die: Die
     var body: some View{
         Section(header: Text("Kind of die")) {
             HStack{
-                Picker("Dice", selection: $selectedDie) {
-                    ForEach(0..<dice.count, id: \.self) { index in
-                        Text("\(dice[index])")
+                Picker("Dice", selection: $die.type) {
+
+                    ForEach(DieType.allCases) { type in
+                        Text(type.rawValue.capitalized)
                     }
+                    
                 }
             }
         }

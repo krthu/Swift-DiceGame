@@ -9,17 +9,26 @@ import Foundation
 
 class Die: ObservableObject{
     @Published var value: Int = 1
-    var sides: Int = 6
-    let type: DieType
+    var sides: Int {
+        if type == .six {
+            return 6
+        } else if type == .twelve{
+            return 12
+        }
+        else{
+            return 0
+        }
+    }
+    @Published var type: DieType
     
     init(type: DieType) {
         self.type = type
-        
-        if type == .six {
-            self.sides = 6
-        } else if type == .twelve{
-            self.sides = 12
-        }
+//        
+//        if type == .six {
+//            self.sides = 6
+//        } else if type == .twelve{
+//            self.sides = 12
+//        }
         roll()
         
         
@@ -33,7 +42,8 @@ class Die: ObservableObject{
     
 }
 
-enum DieType {
+enum DieType: String, CaseIterable, Identifiable {
     case six, twelve
+    var id: Self { self }
     
 }
