@@ -10,6 +10,7 @@ import Foundation
 class Die: ObservableObject{
     @Published var value: Int = 1
     var sides: Int {
+        
         if type == .six {
             return 6
         } else if type == .twelve{
@@ -18,6 +19,7 @@ class Die: ObservableObject{
         else{
             return 0
         }
+        
     }
     @Published var type: DieType
     

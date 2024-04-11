@@ -19,6 +19,7 @@
 		6D29460E2BC41D1B002436B3 /* DiceButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29460D2BC41D1B002436B3 /* DiceButtonLabel.swift */; };
 		6D2946102BC52185002436B3 /* BetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29460F2BC52185002436B3 /* BetGame.swift */; };
 		6D2946122BC525B3002436B3 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2946112BC525B3002436B3 /* DieView.swift */; };
+		6D29464F2BC845F7002436B3 /* PlayerVsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29464E2BC845F7002436B3 /* PlayerVsPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		6D29460D2BC41D1B002436B3 /* DiceButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceButtonLabel.swift; sourceTree = "<group>"; };
 		6D29460F2BC52185002436B3 /* BetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetGame.swift; sourceTree = "<group>"; };
 		6D2946112BC525B3002436B3 /* DieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
+		6D29464E2BC845F7002436B3 /* PlayerVsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVsPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				6D29460D2BC41D1B002436B3 /* DiceButtonLabel.swift */,
 				6D29460F2BC52185002436B3 /* BetGame.swift */,
 				6D2946112BC525B3002436B3 /* DieView.swift */,
+				6D29464E2BC845F7002436B3 /* PlayerVsPlayer.swift */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				6D2945E22BC3E927002436B3 /* ContentView.swift in Sources */,
 				6D29460C2BC40EE0002436B3 /* AiGame.swift in Sources */,
+				6D29464F2BC845F7002436B3 /* PlayerVsPlayer.swift in Sources */,
 				6D2945E02BC3E927002436B3 /* DiceGameApp.swift in Sources */,
 				6D2946102BC52185002436B3 /* BetGame.swift in Sources */,
 				6D29460A2BC3EA6D002436B3 /* Die.swift in Sources */,

@@ -59,9 +59,18 @@ struct BetGame: View{
                             //.padding([.leading, .trailing], 50)
                             .frame(width: 200)
                     }
-                    
-                    betPicker(selected: $selectedNumber, dieImageStrings: dieImageStrings)
-                        .padding(.vertical, 20)
+                    switch die.type {
+                    case .six:
+                        betPicker(selected: $selectedNumber, dieImageStrings: dieImageStrings)
+                            .padding(.vertical, 20)
+                           
+                    case .twelve:
+                        betPicker(selected: $selectedNumber, dieImageStrings: ["1.circle","2.circle","3.circle","4.circle","5.circle","6.circle","7.circle","8.circle","9.circle","10.circle","11.circle","12.circle",])
+                            .padding(.vertical, 20)
+                    }
+                        
+//                    betPicker(selected: $selectedNumber, dieImageStrings: dieImageStrings)
+//                        .padding(.vertical, 20)
                     
                     Button(action: {
                         die.roll()
@@ -82,6 +91,7 @@ struct BetGame: View{
         }
         .sheet(isPresented: $showSettingsSheet ,onDismiss: {
             print("Dismissed")
+            die.roll()
             
             }, content: {
                 SettingsSheet(die: die)
@@ -141,12 +151,17 @@ struct betPicker: View {
                         .tag(index)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+        
+//            .pickerStyle(dieImageStrings.count <= 6 ? SegmentedPickerStyle() : MenuPickerStyle())
+
             
         }
         .padding(.horizontal, 20)
     }
 }
+
+
+
 
 struct SettingsSheet: View{
     @State var dice = ["6 sided", "12 sided"]
@@ -182,7 +197,9 @@ struct ChooseDieSection: View{
                         Text(type.rawValue.capitalized)
                     }
                     
+                    
                 }
+               
             }
         }
     }
